@@ -163,3 +163,5 @@ REST_FRAMEWORK = {
 }
 
 django_on_heroku.settings(locals())
+
+CSRF_TRUSTED_ORIGINS = ["https://peacock-store.herokuapp.com"]
