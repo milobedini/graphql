@@ -9,6 +9,7 @@ black = "*"
 isort = "*"
 pillow = "*"
 django-mptt = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

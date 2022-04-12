@@ -15,9 +15,9 @@ class Category(MPTTModel):
         max_length=255,
         unique=True,
     )
-    slug = (models.SlugField(verbose_name=_("Category safe URL"), max_length=255, unique=True),)
-    parent = (TreeForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="children"),)
-    is_active = (models.BooleanField(default=True),)
+    slug = models.SlugField(verbose_name=_("Category safe URL"), max_length=255, unique=True)
+    parent = TreeForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="children")
+    is_active = models.BooleanField(default=True)
 
     class MPTTMeta:
         order_insertion_by = ["name"]
@@ -63,7 +63,7 @@ class ProductSpecification(models.Model):
 class Product(models.Model):
     product_type = models.ForeignKey(ProductType, on_delete=models.RESTRICT)
     category = models.ForeignKey(Category, on_delete=models.RESTRICT)
-    title = models.charField(verbose_name=_("Title"), help_text=_("Required"), max_length=255)
+    title = models.CharField(verbose_name=_("Title"), help_text=_("Required"), max_length=255)
     description = models.TextField(verbose_name=_("Description"), help_text=_("Not Required"), blank=True)
     slug = models.SlugField(max_length=255)
     regular_price = models.DecimalField(
@@ -98,7 +98,7 @@ class Product(models.Model):
     )
 
     class Meta:
-        ordering = "-created_at"
+        ordering = ("-created_at",)
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
 
