@@ -120,8 +120,8 @@ class ProductSpecificationValue(models.Model):
         verbose_name = _("Product Specification Value")
         verbose_name_plural = _("Product Specification Values")
 
-    def __str__(self):
-        return self.value
+    # def __str__(self):
+    #     return self.value
 
 
 class ProductImage(models.Model):
