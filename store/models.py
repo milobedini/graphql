@@ -105,8 +105,8 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("store:product_detail", args=[self.slug])
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
 
 
 class ProductSpecificationValue(models.Model):
@@ -120,8 +120,8 @@ class ProductSpecificationValue(models.Model):
         verbose_name = _("Product Specification Value")
         verbose_name_plural = _("Product Specification Values")
 
-    # def __str__(self):
-    #     return self.value
+    def __str__(self):
+        return self.value
 
 
 class ProductImage(models.Model):
