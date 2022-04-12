@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 black = "*"
 isort = "*"
+pillow = "*"
+django-mptt = "*"
 
 [dev-packages]
 
