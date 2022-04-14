@@ -11,4 +11,5 @@ class ProductSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "category",
+            "regular_price",
         )
