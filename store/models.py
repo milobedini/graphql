@@ -126,11 +126,11 @@ class ProductSpecificationValue(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_image")
-    image = models.ImageField(
+    image = models.CharField(
         verbose_name=_("Image"),
-        help_text=_("Upload a product image"),
-        upload_to="images/",
-        default="images/default.png",
+        help_text=_("Upload a product image link"),
+        default="https://res.cloudinary.com/dvgbdioec/image/upload/v1644768223/peacock_yevwhu.png",
+        max_length=255,
     )
     alt_text = models.CharField(
         verbose_name=_("Alternative Text"),
