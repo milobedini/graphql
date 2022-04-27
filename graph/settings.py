@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "store",
     "mptt",
     "rest_framework",
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
