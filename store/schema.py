@@ -37,6 +37,7 @@ class CategoryType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_products = graphene.List(ProductType)
+    all_categories = graohene.List(CategoryType)
     # below is for individuals
     all_products_by_name = graphene.Field(ProductType, slug=graphene.String(required=True))
     # categories:
@@ -45,6 +46,9 @@ class Query(graphene.ObjectType):
     # how do we want to resolve our query from above. With Graph, start very general.
     def resolve_all_products(root, info):
         return Product.objects.all()
+
+    def resolve_all_categories(root, info):
+        return Category.objects.filter(level=1)
 
     def resolve_all_products_by_name(root, info, slug):
         try:
