@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "aabfc2f2fb9f0914e747ea1453a0fe9da66009e25de727167af76e5aa8b1ef1a"
+            "sha256": "0f089961ed81e8b145ece16f01332d6bb3233e07a29efa0a5dbaa97445ca03ae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -78,11 +78,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:07c8638e7a7f548dc0acaaa7825d84b7bd42b10e8d22268b3d572946f1e9b687",
-                "sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5"
+                "sha256:6d93497a0a9bf6ba0e0b1a29cccdc40efbfc76297255b1309b3a884a688ec4b6",
+                "sha256:b896ca61edc079eb6bbaa15cf6071eb69d6aac08cce5211583cfb41515644fdf"
             ],
             "index": "pypi",
-            "version": "==4.0.4"
+            "version": "==3.2.13"
         },
         "django-cors-headers": {
             "hashes": [
@@ -152,14 +152,6 @@
                 "sha256:ac514cb86db9a43014d7e73511d521137ac12cf0101b2eaa5f0a3da2e10d913d"
             ],
             "version": "==2.0.1"
-        },
-        "gunicorn": {
-            "hashes": [
-                "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e",
-                "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"
-            ],
-            "index": "pypi",
-            "version": "==20.1.0"
         },
         "isort": {
             "hashes": [
@@ -325,14 +317,6 @@
             ],
             "version": "==1.6.1"
         },
-        "setuptools": {
-            "hashes": [
-                "sha256:26ead7d1f93efc0f8c804d9fafafbe4a44b179580a7105754b245155f9af05a8",
-                "sha256:47c7b0c0f8fc10eec4cf1e71c6fdadf8decaa74ffa087e68cd1c20db7ad6a592"
-            ],
-            "markers": "python_version >= '3.7'",
-            "version": "==62.1.0"
-        },
         "singledispatch": {
             "hashes": [
                 "sha256:bc77afa97c8a22596d6d4fc20f1b7bdd2b86edc2a65a4262bdd7cc3cc19aa989",
@@ -385,7 +369,7 @@
                 "sha256:08c42bc535f9777eea1a599289d9433f081921f97887eaf6f559446b2a080374",
                 "sha256:5a4aff543ee860fbe40d743e556adf92ccd41b7df45697cae074afdf657056b9"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.7'",
             "version": "==6.0.0"
         }
     },

@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 black = "*"
 isort = "*"
 pillow = "*"
@@ -16,8 +15,7 @@ django-on-heroku = "*"
 django-cors-headers = "*"
 psycopg2-binary = "*"
 graphene-django = "*"
-gunicorn = "*"
-whitenoise = "*"
+django = "==3.2.13"
 
 [dev-packages]
 
