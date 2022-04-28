@@ -16,12 +16,30 @@ class ProductType(DjangoObjectType):
         fields = "__all__"
 
 
+# Can still run a query from the FE and only select relevant fields.
+
+
 # Now need a query:
 
 
 class Query(graphene.ObjectType):
     all_products = graphene.List(ProductType)
 
-    # how do we want to resolve our query from above
+    # how do we want to resolve our query from above. With Graph, start very general.
     def resolve_all_products(root, info):
         return Product.objects.all()
+
+
+schema = graphene.Schema(query=Query)
+
+""" 
+Example of how query is made in GraphiQL:
+
+query {
+  allProducts{
+    id
+    title
+    regularPrice
+  }
+}
+ """
