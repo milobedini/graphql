@@ -62,7 +62,7 @@ class ProductSpecification(models.Model):
 
 class Product(models.Model):
     product_type = models.ForeignKey(ProductType, on_delete=models.RESTRICT)
-    category = models.ForeignKey(Category, on_delete=models.RESTRICT)
+    category = models.ForeignKey(Category, on_delete=models.RESTRICT, related_name="product")
     title = models.CharField(verbose_name=_("Title"), help_text=_("Required"), max_length=255)
     description = models.TextField(verbose_name=_("Description"), help_text=_("Not Required"), blank=True)
     slug = models.SlugField(max_length=255)
