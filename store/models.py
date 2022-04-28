@@ -132,6 +132,7 @@ class ProductImage(models.Model):
         default="https://res.cloudinary.com/dvgbdioec/image/upload/v1644768223/peacock_yevwhu.png",
         max_length=255,
     )
+
     # Use Cloudinary field here?
     alt_text = models.CharField(
         verbose_name=_("Alternative Text"),

@@ -5,15 +5,22 @@ Initially, everything is in this one file for GraphQL. Big difference to DRF.
 import graphene
 from graphene_django import DjangoObjectType
 
-from .models import Product
+from .models import Product, ProductImage
 
 # Graph is connected data in a space that we can then query. DjangoObjectType is data object within the graph.
+
+
+class ProductImageType(DjangoObjectType):
+    class Meta:
+        model = ProductImage
+        fields = "__all__"
 
 
 class ProductType(DjangoObjectType):
     class Meta:
         model = Product
-        fields = "__all__"
+        # Just need to include related name below to show relationship.
+        fields = ("id", "title", "description", "regular_price", "slug", "product_image")
 
 
 # Can still run a query from the FE and only select relevant fields.
