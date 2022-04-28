@@ -31,10 +31,19 @@ class ProductType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_products = graphene.List(ProductType)
+    # below is for individuals
+    all_products_by_name = graphene.Field(ProductType, slug=graphene.String(required=True))
 
     # how do we want to resolve our query from above. With Graph, start very general.
     def resolve_all_products(root, info):
         return Product.objects.all()
+
+    def resolve_all_products_by_name(root, info, slug):
+        try:
+            return Product.objects.get(slug=slug)
+
+        except Product.DoesNotExist:
+            return None
 
 
 schema = graphene.Schema(query=Query)
