@@ -37,7 +37,7 @@ class CategoryType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_products = graphene.List(ProductType)
-    all_categories = graohene.List(CategoryType)
+    all_categories = graphene.List(CategoryType)
     # below is for individuals
     all_products_by_name = graphene.Field(ProductType, slug=graphene.String(required=True))
     # categories:
