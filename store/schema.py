@@ -26,7 +26,7 @@ class ProductType(DjangoObjectType):
 class CategoryType(DjangoObjectType):
     class Meta:
         model = Category
-        fields = ("id", "name", "product")
+        fields = ("id", "name", "product", "level")
 
 
 # Can still run a query from the FE and only select relevant fields.
