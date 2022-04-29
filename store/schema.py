@@ -2,6 +2,9 @@
 Schema is a description of what data to include, all the queries and mutations, and the db relationships.
 Initially, everything is in this one file for GraphQL. Big difference to DRF.
  """
+from ast import Return
+from urllib import request
+
 import graphene
 from graphene_django import DjangoObjectType
 
@@ -26,7 +29,7 @@ class ProductType(DjangoObjectType):
 class CategoryType(DjangoObjectType):
     class Meta:
         model = Category
-        fields = ("id", "name", "slug", "product", "level")
+        fields = ("id", "name", "slug", "product", "level", "parent")
 
 
 # Can still run a query from the FE and only select relevant fields.
@@ -64,7 +67,62 @@ class Query(graphene.ObjectType):
             return None
 
 
-schema = graphene.Schema(query=Query)
+class CategoryAdd(graphene.Mutation):
+    class Arguments:
+        name = graphene.String(required=True)
+        slug = graphene.String(required=False)
+
+    category = graphene.Field(CategoryType)
+
+    @classmethod
+    def mutate(root, info, cls, name, slug):
+        category = Category(name=name, slug=slug)
+        category.save()
+        return CategoryAdd(category=category)
+
+
+class CategoryEdit(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+        name = graphene.String(required=True)
+        slug = graphene.String(required=False)
+
+    category = graphene.Field(CategoryType)
+
+    @classmethod
+    def mutate(root, info, cls, id, name, slug):
+        category = Category.objects.get(id=id)
+        category.name = name
+        category.slug = slug
+        category.save()
+        return CategoryEdit(category=category)
+
+
+class CategoryDelete(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+
+    category = graphene.Field(CategoryType)
+
+    @classmethod
+    def mutate(root, info, cls, id):
+        category = Category.objects.get(id=id)
+        category.delete()
+        return
+
+
+# Mutations => can create/edit/delete.
+
+# Add a category.
+
+
+class Mutation(graphene.ObjectType):
+    add_category = CategoryAdd.Field()
+    update_category = CategoryEdit.Field()
+    delete_category = CategoryDelete.Field()
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 """ 
 Example of how query is made in GraphiQL:
@@ -76,4 +134,18 @@ query {
     regularPrice
   }
 }
+ """
+
+""" 
+Add Category query:
+
+mutation firstmutation{
+  addCategory(name:"hello", slug:"hello", parent:1){
+    category{
+      name
+      slug
+    }
+  }
+}
+
  """
